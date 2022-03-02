@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ComposeChallenge</string>
+
+    <string name="content_desc_close">Close</string>
+</resources>
