@@ -21,33 +21,33 @@ import com.fueled.composechallenge.ui.theme.Dimens
 @Composable
 fun AnswerSlider(
     modifier: Modifier = Modifier,
-    answerSliderState: AnswerSliderState = AnswerSliderState.IDLE,
+    answerSliderState: AnswerSliderState = AnswerSliderState.UNSELECTED,
     answer: Answer,
     onAnswerClicked: ((Answer) -> Unit)? = null
 ) {
     val transition = updateTransition(targetState = answerSliderState, label = "slider_state")
     val bgColor by transition.animateColor({ tween(TRANSITION_DURATION) }) { targetState ->
         when (targetState) {
-            AnswerSliderState.IDLE -> Colors.BgAnswerCard
-            AnswerSliderState.ANSWERED -> if (answer.isCorrect) Colors.Success else Colors.Error
+            AnswerSliderState.UNSELECTED -> Colors.BgAnswerCard
+            AnswerSliderState.SELECTED -> if (answer.isCorrect) Colors.Success else Colors.Error
         }
     }
     val textColor by transition.animateColor({ tween(TRANSITION_DURATION) }) { targetState ->
         when (targetState) {
-            AnswerSliderState.IDLE -> Colors.TextColor
-            AnswerSliderState.ANSWERED -> Color.White
+            AnswerSliderState.UNSELECTED -> Colors.TextColor
+            AnswerSliderState.SELECTED -> Color.White
         }
     }
     val iconAlignment by transition.animateFloat({ tween(TRANSITION_DURATION) }) { targetState ->
         when (targetState) {
-            AnswerSliderState.IDLE -> -1F
-            AnswerSliderState.ANSWERED -> 1F
+            AnswerSliderState.UNSELECTED -> -1F
+            AnswerSliderState.SELECTED -> 1F
         }
     }
     val textOffset by transition.animateDp({ tween(TRANSITION_DURATION) }) { targetState ->
         when (targetState) {
-            AnswerSliderState.IDLE -> Dimens.AnswerTextOffset
-            AnswerSliderState.ANSWERED -> Dimens.PaddingHalf
+            AnswerSliderState.UNSELECTED -> Dimens.AnswerTextOffset
+            AnswerSliderState.SELECTED -> Dimens.PaddingHalf
         }
     }
 

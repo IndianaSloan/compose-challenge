@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.Dp
 import coil.compose.rememberImagePainter
 import com.fueled.composechallenge.ui.components.Modifiers.content
 import com.fueled.composechallenge.ui.components.Modifiers.icon
+import com.fueled.composechallenge.ui.components.Modifiers.profileImage
 import com.fueled.composechallenge.ui.theme.Colors
 import com.fueled.composechallenge.ui.theme.Dimens
 
@@ -64,9 +65,7 @@ fun RoundedCard(
                     Image(
                         painter = painterResource(id = iconImageRes),
                         contentDescription = "",
-                        modifier = Modifier
-                            .padding(Dimens.PaddingEighth)
-                            .clip(CircleShape)
+                        modifier = Modifier.profileImage()
                     )
                 }
                 imageUrl != null -> {
@@ -74,9 +73,7 @@ fun RoundedCard(
                         painter = rememberImagePainter(imageUrl),
                         contentScale = ContentScale.Crop,
                         contentDescription = "",
-                        modifier = Modifier
-                            .padding(Dimens.PaddingEighth)
-                            .clip(CircleShape)
+                        modifier = Modifier.profileImage()
                     )
                 }
             }
@@ -93,6 +90,9 @@ fun RoundedCard(
 }
 
 private object Modifiers {
+
+    fun Modifier.profileImage() = this .padding(Dimens.PaddingEighth)
+        .clip(CircleShape)
 
     fun Modifier.content(bgColor: Color, onClicked: (() -> Unit)?): Modifier {
         val innerModifier = this

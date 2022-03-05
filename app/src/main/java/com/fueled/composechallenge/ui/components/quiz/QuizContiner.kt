@@ -103,7 +103,7 @@ fun QuizContainer(
             AnswerAnimation(isVisible = isAnswersVisible, offset = ANSWER_OFFSET * index) {
                 AnswerSlider(
                     answer = answer,
-                    answerSliderState = if (isAnswered) AnswerSliderState.ANSWERED else AnswerSliderState.IDLE,
+                    answerSliderState = if (isAnswered) AnswerSliderState.SELECTED else AnswerSliderState.UNSELECTED,
                     onAnswerClicked = if (quizItem.isActive) {
                         { selectedAnswer -> onStopTimer(selectedAnswer) }
                     } else null
